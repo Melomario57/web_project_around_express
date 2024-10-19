@@ -6,7 +6,7 @@ const usersPath = path.join(__dirname, "../data/users.json");
 usersRoute.get("/users", (req, res) => {
   fs.readFile(usersPath, { encoding: "utf8" }, (err, data) => {
     if (err) {
-      res.status(404).send({ message: "Usuario no encontrado" });
+      res.status(500).send({ message: "Internal Server Error" });
       return;
     }
     res.send(JSON.parse(data));

@@ -1,5 +1,4 @@
 const User = require("../models/user");
-const usersRoute = require("../routes/users");
 
 module.exports.getUsers = (req, res) => {
   User.find({})

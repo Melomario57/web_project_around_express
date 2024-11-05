@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const regexCard =
+  /(http:\/\/|https:\/\/)(www\.)*(\w+\._~:\/\?\/%#\[\]@!\$&'\(\)\*\+,;=)*\/*/;
 
 const cardSchema = new mongoose.Schema({
   name: {
@@ -11,10 +13,8 @@ const cardSchema = new mongoose.Schema({
     type: String,
     required: [true, "Link image is required"],
     validate: {
-      validator: function (v) {
-        return /(http:\/\/|https:\/\/)(www\.)*(\w+\._~:\/\?\/%#\[\]@!\$&'\(\)\*\+,;=)*\/*#*/.test(
-          v
-        );
+      validator(v) {
+        return regexCard.test(v);
       },
       message: (props) => `${props.value} is not a valid URL!`,
     },
@@ -25,7 +25,8 @@ const cardSchema = new mongoose.Schema({
     ref: "user",
   },
   likes: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: "user",
     default: [],
   },
   createdAt: {

@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const regexUser =
+  /(http:\/\/|https:\/\/)(www\.)*(\w+\._~:\/\?\/%#\[\]@!\$&'\(\)\*\+,;=)*\/*/gi;
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -17,10 +19,8 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "User avatar is required"],
     validate: {
-      validator: function (v) {
-        return /(http:\/\/|https:\/\/)(www\.)*(\w+\._~:\/\?\/%#\[\]@!\$&'\(\)\*\+,;=)*\/*#*/.test(
-          v
-        );
+      validator(v) {
+        return regexUser.test(v);
       },
       message: (props) => `${props.value} is not a valid URL!`,
     },

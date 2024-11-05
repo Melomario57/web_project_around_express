@@ -38,6 +38,22 @@
 
 ## :interrobang: Que se aprendió en está etapa?
 
+1. ### Comprender mejor el proceso para conectarse a la base de datos.
+
+2. ### Crear y utilizar los esquemas y modelos, al mismo tiempo, validar la información contenida mediante diversos campos, metódos y espresiones regulares(url).
+
+3. ### Organizar la estructura de directorios, y archivos, es decir, se agrego una carpeta de controladores para colocar los CRUDS, y la gestión de errores.
+
+4. ### Emplear el manejo de errores con el fin de vincularlos con su respectivo estado, en caso de que las solicitudes no sean hechas correctamentes o no se encuentre la información solicitada.
+
+5. ### Crear Apis rest siguiendo las buenas prácticas, empleando los correspondientes métodos "HTTP" acompañados de los respectivos "CRUD".
+
+## Imágenes de las nuevas implementaciones.
+
+<img src="/images/data.png"  border="0"   />
+
+<img src="/images/structure.png"  border="0"   />
+
 ---
 
 ## Tecnologías utilizadas:

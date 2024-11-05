@@ -1,20 +1,37 @@
 const express = require("express");
 const mongoose = require("mongoose");
+
 const app = express();
+
 const path = require("path");
-app.use(express.json());
 app.use(express.static(path.join(__dirname, "/")));
 
-mongoose.connect("mongodb://localhost:27017/aroundb");
+const { PORT = 3000 } = process.env;
 
 const usersRoute = require("./routes/users");
 const cardsRoute = require("./routes/cards");
 
-const { PORT = 3000 } = process.env;
+app.use(express.json());
+
+const bodyParser = require("body-parser");
+app.use(bodyParser.json());
+
+mongoose.connect("mongodb://localhost:27017/aroundb");
+
+app.use((req, res, next) => {
+  req.user = {
+    _id: "672958d9135aa529a2380464",
+  };
+
+  next();
+});
 
 app.use("/", cardsRoute);
 app.use("/", usersRoute);
 
+app.get("", (req, res) => {
+  res.status(404).send({ message: "Recurso solicitado no encontrado" });
+});
 app.listen(PORT, () => {
-  console.log(`La app esta corriendo en el servidor ${PORT}`);
+  console.log(`App is running on port: ${PORT}`);
 });

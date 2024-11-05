@@ -7,14 +7,12 @@ const path = require("path");
 app.use(express.static(path.join(__dirname, "/")));
 
 const { PORT = 3000 } = process.env;
-
+const bodyParser = require("body-parser");
+app.use(bodyParser.json());
 const usersRoute = require("./routes/users");
 const cardsRoute = require("./routes/cards");
 
 app.use(express.json());
-
-const bodyParser = require("body-parser");
-app.use(bodyParser.json());
 
 mongoose.connect("mongodb://localhost:27017/aroundb");
 

@@ -49,7 +49,7 @@ module.exports.likeCard = (req, res) => {
   )
     .orFail(() => {
       const error = new Error("Cannot find card");
-      err.status = 404;
+      error.status = 404;
       throw error;
     })
     .then((card) => {
@@ -69,7 +69,7 @@ module.exports.dislikeCard = (req, res) => {
   )
     .orFail(() => {
       const error = new Error("Cannot find card");
-      err.status = 404;
+      error.status = 404;
       throw error;
     })
     .then((card) => {

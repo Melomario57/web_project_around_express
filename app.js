@@ -28,7 +28,7 @@ app.use("/", cardsRoute);
 app.use("/", usersRoute);
 
 app.get("", (req, res) => {
-  res.status(404).send({ message: "Recurso solicitado no encontrado" });
+  res.status(404).send({ message: "Recurso solicitado no encontrado :C" });
 });
 app.listen(PORT, () => {
   console.log(`App is running on port: ${PORT}`);

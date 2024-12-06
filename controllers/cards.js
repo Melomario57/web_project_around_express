@@ -5,8 +5,8 @@ module.exports.getCards = (req, res) => {
     .populate("owner")
     .then((cards) => {
       if (!cards) {
-        const error = new Error("Internal server error");
-        error.status = 500;
+        const error = new Error("No data");
+        error.status = 404;
         throw error;
       }
       res.send({ data: cards });
@@ -55,6 +55,7 @@ module.exports.likeCard = (req, res) => {
     .then((card) => {
       res.send({ message: "Like added", card });
     })
+
     .catch((err) => {
       console.log("likeCard Error:", err);
       res.status(err.status).send({ error: err.message });

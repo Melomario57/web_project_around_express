@@ -27,8 +27,13 @@ app.use((req, res, next) => {
 app.use("/", cardsRoute);
 app.use("/", usersRoute);
 
+<<<<<<< HEAD
 app.use("", (req, res) => {
   res.status(404).send({ message: "The request url is invalid" });
+=======
+app.get("", (req, res) => {
+  res.status(404).send({ message: "Recurso solicitado no encontrado :C" });
+>>>>>>> abc763e9820445786288887b63e091d47136bbf2
 });
 app.listen(PORT, () => {
   console.log(`App is running on port: ${PORT}`);
